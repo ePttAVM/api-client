@@ -1,6 +1,7 @@
 {
 	"name": "epttavm/api-client",
 	"version": "1.0.2",
+	"license": "MIT",
 	"autoload": {
 		"psr-0": {
 			"Epttavm": "./src/"
@@ -17,6 +18,5 @@
 		"platform": {
 			"php": "5.4"
 		}
-	},
-	"license": "MIT"
+	}
 }
