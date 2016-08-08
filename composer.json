@@ -1,12 +1,11 @@
 {
 	"name": "epttavm/api-client",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"license": "MIT",
 	"autoload": {
 		"psr-0": {
 			"Epttavm": "./src/"
-		},
-		"files": ["src/config.php"]
+		}
 	},
 	"require": {
 	},
