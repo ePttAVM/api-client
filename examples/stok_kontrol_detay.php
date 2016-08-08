@@ -8,16 +8,13 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Epttavm\ApiClient;
-use Epttavm\Exception\ConfigException;
 use Epttavm\Exception\EpaException;
 use Epttavm\KayitDurum;
-use Epttavm\Library\Config;
 use Epttavm\StokKontrolDetay;
 use Epttavm\Variants;
 
 try {
-	$config = Config::getInstance();
-	$a = ApiClient::init($config->web_service->wsdl, $config->web_service->username, $config->web_service->password, ['debug'=>false]);
+	$a = ApiClient::init('https://exact.service.url/service?wsdl', 'username', 'password', ['debug'=>false]);
 
 	//Birinci varyant
 	$v1 = Variants::create()
@@ -58,9 +55,6 @@ try {
 		echo "BAŞARILI!\n";
 	else
 		echo "İŞLEM BAŞARISIZ!\n";
-} catch (ConfigException $e) {
-	echo "CONFIG HATASI\n";
-	die($e->getMessage());
 } catch (EpaException $e) {
 	echo "HATA OLDU:\n".$e->getMessage();
 }
