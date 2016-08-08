@@ -1,0 +1,4 @@
+web_service:
+  wsdl: "SERVICE_URL"
+  username: "WEBSERVICE_USERNAME"
+  password: "WEBSERVICE_PASSWORD"
