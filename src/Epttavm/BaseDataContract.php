@@ -28,9 +28,14 @@ abstract class BaseDataContract
 			if(!in_array($propertyName, static::$_properties))
 				throw new EpaException('Invalid property name!');
 			$this->{$propertyName} = $arguments[0];
+			$this->_validateData();
 			return $this;
 		}
 		print_r(static::$_properties);
 		throw new EpaException(sprintf('Invalid method: %s::%s', static::class, $name));
+	}
+
+	protected function _validateData(){
+
 	}
 }

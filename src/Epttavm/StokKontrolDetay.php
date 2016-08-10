@@ -7,6 +7,7 @@
  */
 
 namespace Epttavm;
+use Epttavm\Exception\EpaException;
 
 /**
  * @method StokKontrolDetay setUrunId(int $urunId)
@@ -23,7 +24,7 @@ namespace Epttavm;
  * @method StokKontrolDetay setIskonto(int $Iskonto)
  * @method StokKontrolDetay setAktif(bool $Aktif)
  * @method StokKontrolDetay setMevcut(bool $Mevcut)
- * @method StokKontrolDetay setAgirlik($Agirlik)
+ * @method StokKontrolDetay setAgirlik(float $Agirlik)
  * @method StokKontrolDetay setBoyX(int $BoyX)
  * @method StokKontrolDetay setBoyY(int $BoyY)
  * @method StokKontrolDetay setBoyZ(int $BoyZ)
@@ -89,4 +90,17 @@ class StokKontrolDetay extends BaseDataContract
 		'GarantiSuresi',
 		'GarantiVerenFirma',
 	];
+
+	protected function _validateData()
+	{
+		if (isset($this->Durum)) {
+			if (!in_array($this->Durum, [KayitDurum::MEVCUT, KayitDurum::YENI]))
+				throw new EpaException(sprintf('Geçersiz Durum Türü: %s', $this->Durum));
+			if ($this->Durum === KayitDurum::YENI)
+				unset($this->UrunId);
+		}
+
+		if (isset($this->Agirlik))
+			$this->Agirlik = floatval($this->Agirlik);
+	}
 }
