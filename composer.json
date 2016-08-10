@@ -1,6 +1,6 @@
 {
 	"name": "epttavm/api-client",
-	"version": "1.0.4",
+	"version": "1.0.6",
 	"license": "MIT",
 	"autoload": {
 		"psr-0": {
