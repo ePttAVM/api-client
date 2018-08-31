@@ -129,11 +129,11 @@ class ApiClient
 		$params->AktifSiparisler = $aktifSiparisler;
 		$res = $this->__call('SiparisKontrolListesiV2',[$params]);
 
-			if ($this->debug)
-			{
-				echo "REQUEST:\n".$this->client->__getLastRequest()."\n";
-				echo "REQUEST HEADERS:\n".$this->client->__getLastRequestHeaders()."\n";
-				echo "RESPONSE:\n".$this->client->__getLastResponse()."\n";
+		if ($this->debug)
+		{
+			echo "REQUEST:\n".$this->client->__getLastRequest()."\n";
+			echo "REQUEST HEADERS:\n".$this->client->__getLastRequestHeaders()."\n";
+			echo "RESPONSE:\n".$this->client->__getLastResponse()."\n";
 		}
 
 		if($res && isset($res->SiparisKontrolListesiV2Result))
