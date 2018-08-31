@@ -112,5 +112,34 @@ class ApiClient
 			$res = $res->StokGuncelleResult;
 		return $res;
 	}
+	
+	/**
+	 * @param DateTime $baslangicTarihi
+	 * @param DateTime $bitisTarihi
+	 * @param int $aktifSiparisler
+	 *
+	 * @return mixed
+	 * @throws EpaException
+	 */
+    	public function SiparisKontrolListesiV2(DateTime $baslangicTarihi, DateTime $bitisTarihi, $aktifSiparisler = 0)
+	{
+		$params = new \stdClass();
+		$params->BaslangicTarihi = $baslangicTarihi->format(DateTime::RFC3339);
+		$params->BitisTarihi = $bitisTarihi->format(DateTime::RFC3339);
+		$params->AktifSiparisler = $aktifSiparisler;
+		$res = $this->__call('SiparisKontrolListesiV2',[$params]);
+
+		if ($this->debug)
+		{
+			echo "REQUEST:\n".$this->client->__getLastRequest()."\n";
+			echo "REQUEST HEADERS:\n".$this->client->__getLastRequestHeaders()."\n";
+			echo "RESPONSE:\n".$this->client->__getLastResponse()."\n";
+		}
+
+		if($res && isset($res->SiparisKontrolListesiV2Result))
+			$res = $res->SiparisKontrolListesiV2Result;
+		
+		return $res;
+	}
 
 }
